@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Keyboard Layout</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1200px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .keyboard {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .half {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .half.left .row {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        .half.right .row {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+        .key {
+            min-width: 50px;
+            height: 50px;
+            padding: 4px 8px;
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            border: 2px solid #999;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .key:hover {
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+        .key.active {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+        .key.dual {
+            background: linear-gradient(145deg, #fff4e6, #ffe4b3);
+            border-color: #ffa500;
+        }
+        .key.dual:hover {
+            background: linear-gradient(145deg, #ffe4b3, #ffd699);
+        }
+        .key-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            width: 100%;
+        }
+        .key-tap {
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .key-divider {
+            width: 80%;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.3);
+            margin: 1px 0;
+        }
+        .key-hold {
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.7;
+            line-height: 1;
+        }
+        .key-single {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .layer-info {
+            text-align: center;
+            font-size: 20px;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        .layer-info:first-child {
+            margin-top: 0;
+        }
+        .legend {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 10px 20px;
+        }
+        .legend-key {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .legend-key.normal {
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            border: 2px solid #999;
+        }
+        .legend-key.dual {
+            background: linear-gradient(145deg, #fff4e6, #ffe4b3);
+            border: 2px solid #ffa500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⌨️ Split Keyboard Layout</h1>
+        <div id="allKeyboards"></div>
+        
+        <div class="legend">
+            <h3>Key Types</h3>
+            <div class="legend-item">
+                <span class="legend-key normal">A</span>
+                <span>Normal Key - Single action</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-key dual">A / Ctrl</span>
+                <span>Dual Function - Tap (top) / Hold (bottom)</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
