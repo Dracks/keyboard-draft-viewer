@@ -1,0 +1,15 @@
+# https://just.systems
+
+default filename="ferris_sweep-dracks-v2": (copy filename) (compile filename) (flash filename)
+
+copy filename:
+    cp ~/Downloads/{{filename}}.json ~/Nextcloud/Documents/keyboard/ferris/{{filename}}.json
+    rm ~/Downloads/{{filename}}.json
+
+compile-and-flash filename: (compile filename) (flash filename)
+
+compile filename:
+    qmk compile -e CONVERT_TO=rp2040_ce ~/Nextcloud/Documents/keyboard/ferris/{{filename}}.json
+
+flash filename:
+    cp ferris_sweep_{{filename}}_rp2040_ce.uf2 /run/media/dracks/RPI-RP2/
