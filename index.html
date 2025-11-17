@@ -153,14 +153,66 @@
             background: linear-gradient(145deg, #fff4e6, #ffe4b3);
             border: 2px solid #ffa500;
         }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                padding: 0;
+                margin: 0;
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0px;
+                max-width: 100%;
+            }
+            h1 {
+                margin-top: 0;
+                margin-bottom: 15px;
+            }
+            #allKeyboards > div {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .layer-info {
+                page-break-after: avoid;
+                break-after: avoid;
+                font-size: 16px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            .keyboard {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin-bottom: 5px;
+                gap: 20px;
+                transform: scale(0.85);
+                transform-origin: top center;
+            }
+            .key {
+                min-width: 40px;
+                height: 40px;
+                font-size: 12px;
+            }
+            .key-tap {
+                font-size: 13px;
+            }
+            .key-hold {
+                font-size: 9px;
+            }
+            .key-single {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>⌨️ Split Keyboard Layout</h1>
         <div id="allKeyboards"></div>
-        
-        <div class="legend">
+
+        <div class="legend no-print">
             <h3>Key Types</h3>
             <div class="legend-item">
                 <span class="legend-key normal">A</span>
@@ -169,6 +221,10 @@
             <div class="legend-item">
                 <span class="legend-key dual">A / Ctrl</span>
                 <span>Dual Function - Tap (top) / Hold (bottom)</span>
+            </div>
+            <h3 style="margin-top: 30px;">Print Settings</h3>
+            <div id="printCheckboxes" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px;">
+                <!-- Checkboxes will be generated here -->
             </div>
         </div>
     </div>

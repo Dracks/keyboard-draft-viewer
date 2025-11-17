@@ -67,7 +67,6 @@ const layouts = {
         right: [],
     }
 };
-// /¿?*&
 
 function renderKey(keyData: string | string[]) {
     const keyDiv = document.createElement('div');
@@ -94,6 +93,7 @@ function renderKey(keyData: string | string[]) {
 function renderKeyboard(layoutName: string) {
     const layout = layouts[layoutName as keyof typeof layouts];
     const container = document.createElement('div');
+    container.setAttribute('data-layer', layoutName);
 
     // Layer title
     const layerTitle = document.createElement('div');
@@ -145,6 +145,46 @@ function renderAllKeyboards() {
             allKeyboards.appendChild(renderKeyboard(layoutName));
         });
     }
+
+    // Generate print checkboxes
+    generatePrintCheckboxes();
+}
+
+function generatePrintCheckboxes() {
+    const checkboxContainer = document.getElementById('printCheckboxes');
+    if (!checkboxContainer) return;
+
+    checkboxContainer.innerHTML = '';
+
+    Object.keys(layouts).forEach(layoutName => {
+        const checkboxItem = document.createElement('div');
+        checkboxItem.className = 'checkbox-item';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `print-${layoutName}`;
+        checkbox.checked = true; // Default: all layers enabled for print
+        checkbox.addEventListener('change', () => toggleLayerPrint(layoutName, checkbox.checked));
+
+        const label = document.createElement('label');
+        label.htmlFor = `print-${layoutName}`;
+        label.textContent = layoutName.charAt(0).toUpperCase() + layoutName.slice(1);
+
+        checkboxItem.appendChild(checkbox);
+        checkboxItem.appendChild(label);
+        checkboxContainer.appendChild(checkboxItem);
+    });
+}
+
+function toggleLayerPrint(layoutName: string, shouldPrint: boolean) {
+    const layerElements = document.querySelectorAll(`[data-layer="${layoutName}"]`);
+    layerElements.forEach(element => {
+        if (shouldPrint) {
+            element.classList.remove('no-print');
+        } else {
+            element.classList.add('no-print');
+        }
+    });
 }
 
 // Initial render
