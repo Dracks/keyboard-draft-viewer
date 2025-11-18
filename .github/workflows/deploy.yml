@@ -48,7 +48,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build -- --config config/dracks-repo.ts
+        run: pnpm build --config config/dracks-repo.ts
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

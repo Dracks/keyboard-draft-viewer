@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
+import type { UserConfig } from 'vite'
 
-   export default defineConfig({
-     base: '/keyboard-draft-viewer/', // Replace with your actual repo name
-   })
+export default {
+    base: "/keyboard-draft-viewer/"
+} satisfies UserConfig
