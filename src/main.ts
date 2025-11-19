@@ -59,12 +59,32 @@ const layouts = {
         ],
     },
     mouse: {
-        left: [],
-        right: [],
+        left: [
+            ['N/A', 'M5e 3', 'M5e 2', 'M5e 1', 'N/A'],
+            ['LShift', 'Cntrl', 'LOS', 'LAlt', 'N/A'],
+            ['End', 'Page Down', 'Page Up', 'Home', 'N/A'],
+            ['∆', '∆'],
+        ],
+        right: [
+            ['N/A', 'M5e 1', 'M5e 2', 'M5e 3', 'N/A'],
+            ['M5e<br />Left', 'M5e<br />Up', 'M5e<br />Down', 'M5e<br />Right', 'N/A'],
+            ['M5e<br />Scr Left', 'M5e<br />Scr Up', 'M5e<br />Scr Down', 'M5e<br />Scr Right', 'N/A'],
+            ['∆', 'Base'],
+        ],
     },
     numpad: {
-        left: [],
-        right: [],
+        left: [
+            ['Debug', 'N/A', 'N/A', 'N/A', 'N/A'],
+            ['Reboot', 'N/A', 'N/A', 'N/A', 'N/A'],
+            ['Boot', 'N/A', 'N/A', 'N/A', 'N/A'],
+            ['∆', '∆'],
+        ],
+        right: [
+            ['*', '7', '8', '9', '-'],
+            ['/', '4', '5', '6', '+'],
+            ['0', '1', '2', '3', '.'],
+            ['∆', 'Base'],
+        ],
     }
 };
 
